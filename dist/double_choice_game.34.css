@@ -1,0 +1,527 @@
+/*!******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/double_choice_game.css ***!
+  \******************************************************************************/
+html, body {
+  /* разворачиваем поля страницы на весь экран */
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  /* отступ сверху */
+  margin-top: 1%;
+}
+
+
+/* контейнер с кнопкой "Начать игру" и текстом "Угадай стратегию" */
+.start{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  width: 20%;
+  left: 40%;
+}
+
+/* Кнопка Начать игру! */
+
+.new_game{
+  appearance: none;
+  width: 80%;
+  border-radius: 5px;
+  top:2%;
+  background: #bacdea;
+
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 200%;
+  line-height: 120%;
+  text-align: center;
+  color: #000000;
+  font-size: 2.2vw;
+}
+
+/* Текст 'Угадай стратегию!' */
+
+#head_text {
+  width: 100%;
+  margin: 0px;
+  
+  font-family: "Inter";
+  font-weight: 500;
+  text-align: center;
+  color: #000000;
+  display: none;
+  font-size: 2vw;
+}
+
+/* Контейнер для бокового поля с описанием всех стратегий */
+
+.help_str_field{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  right: 0%;
+  transform: translateX(99.1%);
+  transition: 1s;
+  max-height: 90%;
+  top:5%;
+  margin-right: 1%;
+  align-items: center;
+}
+/* Кнопка, при нажатии на которую выдвигаются стратегии */
+.str_button{
+  writing-mode: vertical-rl;
+  font-size: 1.5vw;
+  transform: rotate(180deg);
+}
+
+/* Поле с описанием стратегий */
+
+.strategies_container {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  top: 0px;
+  background: #d9d9d9;
+  text-align: center;
+}
+
+#strategies_description{
+  margin:0px;
+  padding:4px;
+  border-style: solid;
+  box-sizing: border-box;
+  border-color: gray;
+  border-width:2px;
+  border-left-width: 3px;
+  border-top-width: 3px;
+  border-right-width: 3px;
+  font-size: 1.5vw;
+}
+
+.copy-block, .detective-block, 
+.truster-block, .liar-block, 
+.vindictive-block, .random-block, 
+.alternation-block,.not_forgiving-block{
+  border-style: solid ;
+  border-color: gray;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-right-width: 3px;
+  border-left-width: 3px;
+  font-size: 1vw;
+  transition: background 1s;
+}
+.not_forgiving-block{
+  border-bottom-width: 3px;
+}
+
+#str_detective, #str_truster, 
+#str_liar, #str_copy, 
+#str_vindictive, #str_random, 
+#str_alternation, #str_not_forgiving{
+  margin: 2%;
+}
+
+.color{
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  height: 5%;
+  justify-content: space-between;
+}
+
+.color_but{
+  width:20%;
+  height: 100%;
+  border-radius: 50%;
+  display: none;
+}
+
+#red{
+  background-color: #e0b9b9;
+}
+#green{
+  background-color: #bbe7bb;
+}
+#gray{
+  background-color: #d9d9d9;
+}
+
+.detective-block:hover .color_but{
+  display: block;
+}
+
+
+/* таблица с моделью */
+
+.model_field{
+  top: 2%; /* указание отступа от верха страницы */
+  width: 32%;
+  height: 35%;
+  left: -30%;
+  display: flex;
+  flex-direction: row-reverse;
+  position: fixed;
+  align-items: center;
+  font-size: max(1vw, 1.3vh);
+  transition:1.5s;
+}
+
+
+.table_container{
+  display: flex;
+  flex-direction: column;
+  left:0px;
+  position: absolute;
+  top:0%;
+  align-items: center;
+}
+
+#model_table{
+  display: block;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid gray;
+  background: #d9d9d9;
+  margin: 0;
+}
+
+.model-name{
+  font-size: min(1.6vw, 3vh);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  background: #d9d9d9;
+  border-top: 3px solid gray;
+  border-left: 3px solid gray;
+  border-right: 3px solid gray;
+}
+
+
+.model_button, .graph_button, .logger_button{
+  writing-mode: vertical-rl;
+  font-size: max(1.5vw, 1.7vh);
+  transform: rotate(180deg);
+}
+
+#zero-zero, #three-m-one, #m-one-three, #two-two{
+  /* адаптивый размер шрифта */
+  font-size: max(2.7vw, 2vh); 
+  /* жирный шрифт */
+  font-weight: bold;
+  /* скорость изменения цвета во время игры */
+  transition: background 1s;
+}
+
+th, td {
+  /* адаптивный размер отступов в ячейках таблицы */
+  padding: max(1.5vw, 1.5vh);
+}
+
+/* Блок с графиком */
+.graph{
+  /* структура аналогична таблице с моделью */
+  display: flex;
+  flex-direction: row-reverse;
+  left: -30%;
+  position: fixed;
+  width: 32%;
+  height: 30%;
+  top: 38%;
+  align-items: center;
+  transition:1.5s;
+}
+
+.graph_container{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  background: #d9d9d9;
+  box-sizing: border-box;
+  border: 3px solid gray;
+}
+
+#MyChart{
+  width: 100%;
+  height: 100%;
+}
+
+/* Логгер с историей ходов */
+
+.logger{
+  position: fixed;
+  display: flex;
+  flex-direction: row-reverse;
+  left:-30%;
+  top: 72%;
+  width: 32%;
+  height: 20%;
+  align-items: center;
+  transition:1.5s;
+  bottom: 5%;
+  font-size: max(1.2vw, 1vh);
+}
+
+.logger-container{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  align-items: center;
+  background: #d9d9d9;
+  box-sizing: border-box;
+  border: 3px solid gray;
+}
+
+#history{
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  background: #d9d9d9;
+  border-top: 3px solid gray;
+  /* возможность скролить историю вниз и вверх  */
+  overflow-y: scroll;
+  /* чтобы можно было использовать /n в js коде */
+  white-space: pre;
+}
+
+
+.main_field{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  height: 20%;
+  width: 25%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#step_num {
+  /* Шаг № 0 */
+  width: 100%;
+  height: 50%;
+
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5vw;
+  line-height: 63px;
+  text-align: center;
+  color: #000000;
+}
+
+.trust_but {
+  /* Кнопка довериться */
+  border-radius: 50px;
+  width: 40%;
+  height: 100%;
+  background: #bbe7bb;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2vw;
+  line-height: 29px;
+
+  color: #000000;
+}
+
+.lie_but {
+  /* Кнопка обмануть*/
+  border-radius: 50px;
+  width: 40%;
+  height: 100%;
+
+  background: #e0b9b9;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2vw;
+  line-height: 29px;
+
+  color: #000000;
+}
+
+.score{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  width: 22%;
+  height: 30%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#game_score {
+  /* Текущий счет: */
+  width: 100%;
+  height: 30%;
+  margin: 0%;
+
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5vw;
+  line-height: 63px;
+  text-align: center;
+  color: #000000;
+}
+
+.im_container{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#player_house, #ai_house {
+  width:35%;
+  height:60%;
+}
+
+
+
+.score_container{
+  position: absolute;
+  bottom: 30%;
+  width: 95%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.score_player, .score_ai {
+  /* счет пользователя */
+  width: 30%;
+  height: 100%;
+
+  font-family: "Inika";
+  font-style: normal;
+  font-weight: 400;
+  font-size: max(4vw, 5vh);
+  line-height: max(6vw, 7vh);
+  text-align: center;
+  color: #000000;
+}
+
+.text_container{
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#text_player, #text_ai{
+  /* Вы */
+  width: 35%;
+  height: 100%;
+  margin-top: 3%;
+  margin-bottom: 0%;
+  text-align: center;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: max(1.3vw, 1.7vh);
+  text-align: center;
+
+  color: #000000;
+}
+
+
+/* Форма с выбором */
+
+.answer{
+  position: relative;
+  display: flex; 
+  justify-content: center;
+  top:5%;
+  height: 10%;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#form {
+  font-style: normal;
+  font-size: max(1.5vw, 2.3vh);
+  text-align: center;
+}
+
+#response_text {
+  display: none;
+  width: 100%;
+  height: 30%;
+  bottom: 0;
+
+
+  font-family: "Inika";
+  font-style: normal;
+  font-size: max(1.5vw, 2.3vh);;
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+}
+
+.ending{
+  position: absolute;
+  top:0;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #d9d9d9;
+  border: 3px solid gray;
+  transition: 2s;
+  display: none;
+}
+
+#win{
+  font-size: 40px;
+}
+
+#type, #steps_num{
+  font-weight: lighter;
+  font-size: 30px;
+}
+
+.end-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#end-links{
+  display: inline-block; /* Строчно-блочный элемент */
+  background: #bacdea;
+  border: 3px solid gray;
+  padding: 1rem 1.5rem; /* Поля вокруг текста */
+  border-radius: 3px;
+  margin: 10px; /* Скругляем уголки */
+}
+
