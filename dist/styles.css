@@ -1,0 +1,121 @@
+/*!****************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/main_page.css ***!
+  \****************************************************************************/
+
+#title{
+    text-align: center;
+    font-size: 40px;
+    font-style: sans-serif;
+}
+#author{
+    text-align: center;
+    font-style: sans-serif;
+}
+
+#double-description, #triple_description{
+    font-size: 20px;
+    margin: 20px;
+}
+
+.double-table, .double-strategies, 
+.triple-table, .triple-strategies, .jackson-explanation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button-double-table, #button-double-strategies,
+#button-triple-table, #button-triple-strategies, 
+#jackson-img-button{
+    border-radius: 5px;
+    background: #bacdea;
+    text-align: center;
+    color: #000000;
+    height: 20px;
+}
+
+#button-double-table, #button-triple-table{
+    width: 200px;
+}
+
+.table-container{
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#table-for-double-model, #table-for-triple-model{
+    font-size: 20px;
+    border: 2px solid gray;
+    background: #d9d9d9;
+    border-collapse: collapse;
+}
+
+
+#table-for-double-model{
+    width: 390px;
+    height: 100px;
+}
+
+#table-for-triple-model{
+    width: 540px;
+    height:150px;
+}
+
+.double-model-name, .triple-model-name{
+    width: 390px;
+    text-align: center;
+}
+
+.triple-model-name{
+    width: 540px;
+    text-align: center;
+}
+
+.step{
+    text-align: center;
+}
+
+#table-for-double-strategies, #table-for-triple-strategies{
+    display: none;
+    font-size: 20px;
+    border: 2px solid gray;
+    background: #d9d9d9;
+    border-collapse: collapse;
+    margin: 10px;
+    text-align: center;
+}
+
+#double-str-names, #triple-str-names{
+    font-weight: bold;
+}
+
+#jackson-img{
+    width: 90%;
+    height: 120%;
+    display: none;
+}
+
+.dubble-choice-links,.triple-choice-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 20px;
+    font-style: sans-serif;
+    margin: 20px;
+}
+
+.links{
+    display: inline-block; /* Строчно-блочный элемент */
+    background-color: #d9d9d9;
+    border: 3px solid gray;
+    padding: 1rem 1.5rem; /* Поля вокруг текста */
+    text-decoration: none; /* Убираем подчёркивание */
+    border-radius: 3px;
+    margin: 10px; /* Скругляем уголки */
+}
+
+
+
