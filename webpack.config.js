@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: "double_choice_bundle.js", // Имя выходного файла сборки
     path: path.resolve(__dirname, "dist"), // Путь для выходного файла сборки
-    assetModuleFilename: "assets/images/[name]-[hash][ext]",
+    assetModuleFilename: path.join('images', '[name].[contenthash][ext]')
   },
 
   // entry: "./src/double_choice.js",
@@ -19,10 +19,15 @@ module.exports = {
 
   module: {
     rules: [
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   type: "asset/resource",
+      // },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: 'file-loader'
       },
+
       { test: /\.css$/, use: [
         miniCss.loader,
         'css-loader']},

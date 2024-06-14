@@ -1,6 +1,8 @@
 import { game } from "./game_class.js";
 import { Chart } from "chart.js/auto";
-import './double_choice_game.css'
+import './double_choice_game.css';
+import src from './images/house.png';
+
 
 const start_button = document.querySelector("#new_game");
 const step_cnt = document.getElementById("step_num");
