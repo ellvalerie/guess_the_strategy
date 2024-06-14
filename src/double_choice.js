@@ -2,6 +2,7 @@ import { game } from "./game_class.js";
 import { Chart } from "chart.js/auto";
 import './double_choice_game.css';
 import src from './images/house.png';
+import src2 from './images/jackson_str.jpg';
 
 
 const start_button = document.querySelector("#new_game");
