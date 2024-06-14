@@ -3,26 +3,15 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const miniCss = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/double_choice.js", // Точка входа для сборки проекта
+  entry: "./src/triple_solution.js", // Точка входа для сборки проекта
   output: {
-    filename: "double_choice_bundle.js", // Имя выходного файла сборки
+    filename: "triple_solution_bundle.js", // Имя выходного файла сборки
     path: path.resolve(__dirname, "dist"), // Путь для выходного файла сборки
     assetModuleFilename: path.join('images', '[name].[contenthash][ext]')
   },
 
-  // entry: "./src/double_choice.js",
-  // output: {
-  //   filename: "double_bandle.js", // Имя выходного файла сборки
-  //   path: path.resolve(__dirname, "dist"), // Путь для выходного файла сборки
-  //   assetModuleFilename: "assets/images/[name]-[hash][ext]",
-  // },
-
   module: {
     rules: [
-      // {
-      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
-      //   type: "asset/resource",
-      // },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: 'file-loader'
@@ -46,11 +35,11 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      filename: "double_choice.html",
-      template: "./src/double_choice.html",
+      filename: "triple_game_solution.html",
+      template: "./src/triple_game_solution.html",
     }),
     new miniCss({
-                 filename: 'double_choice_game.34.css',
+                 filename: 'triple_choice_game.56.css',
               }),
     ],
 

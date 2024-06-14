@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!--Chart.js JS CDN - библиотека для графиков--> 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>  -->
+    <script type="importmap">
+      {
+        "imports": {
+          "@kurkle/color": "/node_modules/@kurkle/color/dist/color.esm.js",
+          "chart.js/auto": "/node_modules/chart.js/auto/auto.js"
+        }
+      }
+    </script>
+    <!-- мой скрипт -->
+    <script type="module" src="triple_choice.js"></script>
+    <!-- стили -->
+    <link rel="stylesheet" , href="../styles/triple_choice_game.css"/>
+    <title>guess the strategy</title>
+  <script defer src="triple_choice_bundle.js"></script><link href="triple_choice_game.34.css" rel="stylesheet"></head>
+  <body>
+    <div class="start">
+      <input
+        type="button"
+        value="Начать игру!"
+        id="new_game"
+        class="new_game"
+      /><br />
+      <h1 id="head_text">Угадай стратегию!</h1>
+    </div>
+    <!-- боковая панель с моделью игры -->
+    <aside class="model_field" id="model_field">
+      <!-- кнопка для появления модели -->
+      <input
+      type="button"
+      value="модель"
+      class="model_button"
+      id="model_button"
+    />
+    <div class="table-container">
+      <table border="1" id="table">
+        <div class="model-name">Игровая модель</div>
+        <tr>
+          <td>Вы\Противник</td>
+          <td>ПОВЫСИТЬ</td>
+          <td>ВОЗДЕРЖАТЬСЯ</td>
+          <td>ПОНИЗИТЬ</td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>ПОВЫСИТЬ</td>
+            <td class = 'step' id="four-four">+4 +4</td>
+            <td class = 'step' id="m-one-three">-1 +3</td>
+            <td class = 'step' id="m-two-five">-2 +5</td>
+          </tr>
+          <tr>
+            <td>ВОЗДЕРЖАТЬСЯ</td>
+            <td class = 'step' id="three-m-one">+3 -1</td>
+            <td class = 'step' id="zero-zero">+0 +0</td>
+            <td class = 'step' id="m-one-and-half">-1 +1</td>
+          </tr>
+          <tr>
+            <td>ПОНИЗИТЬ</td>
+            <td class = 'step' id="five-m-two">+5 -2</td>
+            <td class = 'step' id="one-and-half">+1 -1</td>
+            <td class = 'step' id="m-one-m-one">-0.5 -0.5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </aside>
+    <!-- боковая панель с графиком игры -->
+    <aside class="graph" id = "graph">
+      <!-- кнопка для появления графика -->
+      <input
+      type="button"
+      value="график"
+      class="graph_button"
+      id="graph_button"
+    />
+    <div class="graph_container">
+      <canvas id = "MyChart" width="500px" height="300px"> </canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script> 
+      <script type="text/javascript"> 
+      </script>
+    </div>
+    </aside>
+    <aside class="logger" id = "logger">
+      <input
+      type="button"
+      value="логгер"
+      class="logger_button"
+      id="logger_button"
+    />
+      <div class = "logger-container">
+        <div id="logger-name">История ходов</div>
+        <div id = "history"> Игра еще не началась
+        </div>
+      </div>
+    </aside>
+    <aside class="help_str_field" id="help_str_field">
+      <!-- описание всех стратегий -->
+      <!-- кнопка для появления поля стратегий -->
+      <input
+        type="button"
+        value="стратегии"
+        class="str_button"
+        id="str_button"
+      />
+      <!-- поле со всеми статегиями  -->
+      <div class="strategies_container" id="strategies_container">
+        <h2 id="strategies_description">Описание стратегий</h2>
+        <table border = "1" id = "table_strategies">
+          <tr>
+            <td id="John-block">
+              <h3 id="str_John">John:</h3>
+              Всегда понижает цену, независимо от действий игрока.
+            </td>
+            <td id="Sam-block">
+              <h3 id="str_Sam">Sam:</h3>
+              Всегда воздерживается, независимо от действий игрока.
+            </td>
+          </tr>
+          <tr>
+            <td id="Lenny-block">
+              <h3 id="str_Lenny">Lenny:</h3>
+              Всегда повыщает цену, независимо от действий игрока.
+            </td>
+            <td id="Bob-block">
+              <h3 id="str_Bob">Bob:</h3>
+              Повышает до первого понижения, после которого начинает всегда понижать.
+            </td>
+          </tr>
+          <tr>
+            <td id="Matthew-block">
+              <h3 id="str_Matthew">Matthew:</h3>
+              Чередует понижение, воздерживание и повышение, начиная с понижения.
+            </td>
+            <td id="Molly-block">
+              <h3 id="str_Molly">Molly:</h3>
+              Cначала воздерживается, а затем а затем копирует предыдущий ход игрока.
+            </td>
+          </tr>
+          <tr>
+            <td id="Brandon-block">
+              <h3 id="str_Brandon">Brandon:</h3>
+              Подбрасывает монетку и рандомно выбирает свой ход.
+            </td>
+            <td id="Kate-block">
+              <h3 id="str_Kate">Kate:</h3>
+              Пока её счет больше или равен счету игрока, то она воздерживается, 
+              иначе понижает до того момента, пока её счет снова не будет больше или равен.
+            </td>
+          </tr>
+          <tr>
+            <td id="Lesly-block">
+              <h3 id="str_Lesly">Lesly:</h3>
+              Первые 3 раунда воздерживается. Затем в последующих 3 раундах выбирает то, чего было больше
+              в предыдущих 3 раундах. 
+            </td>
+            <td id="Jackson-block">
+              <h3 id="str_Jackson">Jackson:</h3>
+              Первые два раунда повышает, если игрок хоть раз понизил, то следующие два раунда воздерживается, 
+              если игрок снова хоть раз понизил, то он следущие два раунда понижает. Если цикл сбивается, то всё начинается заново.
+            </td>
+          </tr>
+          <tr>
+            <td id="Tomas-block">
+              <h3 id="str_Tomas">Tomas:</h3>
+              Чередует понижение, воздерживание и повышение каждые 2 раунда.
+            </td>
+            <td id="Emily-block">
+              <h3 id="str_Emily">Emily:</h3>
+              Воздерживается, если счет равный, понижает, если количество прибыли у игрока больше
+              и повышает, если количество пробыли у игрока меньше.
+            </td>
+          </tr>
+        </table>
+      </div>
+    </aside>
+    <div class="main_field">
+      <h1 id="step_num">Шаг № 0</h1>
+      <div class="buttons">
+        <input type="button" value="ПОВЫСИТЬ" id="up" class="up_but" />
+        <input type="button" value="ВОЗДЕРЖАТЬСЯ" id="skip" class="skip_but" />
+        <input type="button" value="ПОНИЗИТЬ" id="down" class="down_but" />
+      </div>
+    </div>
+    <div class="score">
+      <h2 id="game_score">Текущий счет:</h2>
+      <div class="im_container">
+        <img id="player_house" src="../imgs/house.png" />
+        <img id="ai_house" src="../imgs/house.png" />
+      </div>
+      <div class="score_container">
+        <div class="score_player" id="score_player">
+          <text id="score_player_text">
+            0
+          </text>
+          </div>
+        <div class="score_ai" id="score_ai">
+          <text id="score_ai_text">
+            0
+          </text>
+        </div>
+      </div>
+      <div class="text_container">
+        <p id="text_player">Вы</p>
+        <p id="text_ai">Противник</p>
+      </div>
+    </div>
+
+    <div class="answer">
+      <!-- Форма для получения ответа -->
+      <form id="form">
+        <!-- Определены тест по умолчанию, кнопка submit, ответ на введенный ответ (скрыт) -->
+        <label>
+          Стратегия:
+          <select id="strategy">
+            <option selected hidden>Выберите стратегию</option>
+            <option id="John">John</option>
+            <option id="Sam">Sam</option>
+            <option id="Lenny">Lenny</option>
+            <option id="Bob">Bob</option>
+            <option id="Matthew">Matthew</option>
+            <option id="Molly">Molly</option>
+            <option id="Brandon">Brandon</option>
+            <option id="Kate">Kate</option>
+            <option id="Lesly">Lesly</option>
+            <option id="Jackson">Jackson</option>
+            <option id="Tomas">Tomas</option>
+            <option id="Emily">Emily</option>
+          </select>
+        </label>
+
+        <button type="submit">Submit</button>
+        <h1 id="response_text">...</h1>
+      </form>
+    </div>
+    <div class = 'ending' id = 'ending'>
+      <h2 id="win"> Вы выиграли! </h2>
+      <h3 id = 'type'> Тип противника был ... </h3>
+      <h3 id = 'steps_num'> Вы угадали за ... шагов </h3>
+      <div class="end-buttons">
+        <form action="../index.html">
+          <input type="submit" value="Главная страница" id = 'end-links'/>
+      </form>
+      <form action="triple_choice.html">
+        <input type="submit" value="Начать заново" id = 'end-links'/>
+    </form>
+      </div>
+    </div>
+  </body>
+</html>
